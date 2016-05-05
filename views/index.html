@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>UET Code Hub</title>
+	<meta charset="utf-8">
+	<link href="../public/css/bootstrap.min.css" rel="stylesheet">
+	<link href="../public/css/stylesheet.css" rel="stylesheet">
+	<script type="text/javascript" src="../public/js/jquery-1.12.3.min.js"></script>
+	<script type="text/javascript" src="../public/js/bootstrap.js"></script>
+	<script type="text/javascript" src="../public/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="../public/js/w3data.js"></script>
+</head>
+<body>
+	<div w3-include-html="navbar.html"></div> 
+	<div class="row">
+      	<div w3-include-html="exercise.html"></div>
+     </div>
+</body>
+<div w3-include-html="footer.html"></div>
+<div id="MyEdit2">
+            This text will change
+        </div>
+        <script>
+        document.getElementById("MyEdit2").innerHTML = "My new text!";
+        </script>
+</html>
+
+
+<script>
+w3IncludeHTML();
+
+</script>
