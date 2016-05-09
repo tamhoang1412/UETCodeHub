@@ -1,0 +1,37 @@
+<div class="container">
+  <h2>Lớp của tôi</h2>
+  <table id="courses-table"></table>
+</div>
+
+
+<script>
+  var text = '[{"courseName":"INT2345 6 Tin học cơ sở 4","lecturer":"TS. Nguyễn Văn Vinh","description":"Cơ bản về C/C++", "completeStatus":"40", "semester":"Học kì 1 năm học 2014-2015", "enrollStatus":"Đã tham gia"}, {"courseName":"INT2345 6 Tin học cơ sở 4","lecturer":"TS. Nguyễn Văn Vinh","description":"Cơ bản về C/C++", "completeStatus":"40", "semester":"Học kì 1 năm học 2014-2015", "enrollStatus":"Đã tham gia"}, {"courseName":"INT2345 6 Tin học cơ sở 4","lecturer":"TS. Nguyễn Văn Vinh","description":"Cơ bản về C/C++", "completeStatus":"40", "semester":"Học kì 1 năm học 2014-2015", "enrollStatus":"Đã tham gia"}, {"courseName":"INT2345 6 Tin học cơ sở 4","lecturer":"TS. Nguyễn Văn Vinh","description":"Cơ bản về C/C++", "completeStatus":"40", "semester":"Học kì 1 năm học 2014-2015", "enrollStatus":"Đã tham gia"},  {"courseName":"INT2345 6 Tin học cơ sở 4","lecturer":"TS. Nguyễn Văn Vinh","description":"Cơ bản về C/C++", "completeStatus":"40", "semester":"Học kì 1 năm học 2014-2015", "enrollStatus":"Đã tham gia"}, {"courseName":"INT2345 6 Tin học cơ sở 4","lecturer":"TS. Nguyễn Văn Vinh","description":"Cơ bản về C/C++", "completeStatus":"40", "semester":"Học kì 1 năm học 2014-2015", "enrollStatus":"Đã tham gia"}, {"courseName":"INT2345 6 Tin học cơ sở 4","lecturer":"TS. Nguyễn Văn Vinh","description":"Cơ bản về C/C++", "completeStatus":"40", "semester":"Học kì 1 năm học 2014-2015", "enrollStatus":"Đã tham gia"}, {"courseName":"INT2345 6 Tin học cơ sở 4","lecturer":"TS. Nguyễn Văn Vinh","description":"Cơ bản về C/C++", "completeStatus":"40", "semester":"Học kì 1 năm học 2014-2015", "enrollStatus":"Đã tham gia"}, {"courseName":"INT2345 6 Tin học cơ sở 4","lecturer":"TS. Nguyễn Văn Vinh","description":"Cơ bản về C/C++", "completeStatus":"40", "semester":"Học kì 1 năm học 2014-2015", "enrollStatus":"Đã tham gia"}, {"courseName":"INT2345 6 Tin học cơ sở 4","lecturer":"TS. Nguyễn Văn Vinh","description":"Cơ bản về C/C++", "completeStatus":"40", "semester":"Học kì 1 năm học 2014-2015", "enrollStatus":"Đã tham gia"}, {"courseName":"INT2345 6 Tin học cơ sở 4","lecturer":"TS. Nguyễn Văn Vinh","description":"Cơ bản về C/C++", "completeStatus":"40", "semester":"Học kì 1 năm học 2014-2015", "enrollStatus":"Đã tham gia"}, {"courseName":"INT2345 6 Tin học cơ sở 4","lecturer":"TS. Nguyễn Văn Vinh","description":"Cơ bản về C/C++", "completeStatus":"40", "semester":"Học kì 1 năm học 2014-2015", "enrollStatus":"Đã tham gia"}]';
+  document.getElementById("courses-table").innerHTML = jsonToHTMLTableCourses(text);
+  $(document).ready(function() {
+      $('#courses-table').DataTable( {
+          "pagingType": "full_numbers"
+      } );
+  } );
+  function jsonToHTMLTableCourses(response){
+    var arr = JSON.parse(text);
+    var i;
+    var out = "<table class=\"table table-bordered\"><thead><tr><th>Tên khóa học</th><th>Giảng viên</th><th>Mô tả</th><th>Hoàn thành</th></tr></thead><tbody>";
+    for(i = 0; i < arr.length; i++) {
+        out += "<tr><td>" +  
+        "<a data-toggle=\"modal\"data-target=\"#course-info-modal\">" +
+        arr[i].courseName +
+        "</a><div class=\"modal fade\"id=\"course-info-modal\"role=\"dialog\"><div class=\"modal-dialog\"><div class=\"modal-content\"><div class=\"modal-header\"><button type=\"button\"class=\"close\"data-dismiss=\"modal\">&times;</button><h4 class=\"modal-title\">Thông tin khóa học</h4></div><div class=\"modal-body\"><p>" +
+        arr[i].description +
+        "</p></div><div class=\"modal-footer\"><buttontype=\"button\"class=\"btn btn-default\"data-dismiss=\"modal\">Đóng</button></div></div></div></div>" +
+        "</td><td>" +
+        arr[i].lecturer +
+        "</td><td>" +
+        arr[i].semester +
+        "</td><td>" + 
+        "<a data-toggle=\"modal\" data-target=\"#enroll-modal\">Tham gia lớp</a><div class=\"modal fade\" id=\"enroll-modal\" role=\"dialog\"><div class=\"modal-dialog\"><div class=\"modal-content\"><div class=\"modal-header\"><button type=\"button\" class=\"close\" data-dismiss=\"modal\">&times;</button><h4 class=\"modal-title\">Xác nhận</h4></div><div class=\"modal-body\"><p>Bạn muốn tham gia lớp...?<p></div><div class=\"modal-footer\"><button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\">Đồng ý</button><button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">Hủy bỏ</button>"
+        "</div></div></td></tr>";
+    }
+    out += "</tbody></table>";
+    return out;
+  }
+</script>

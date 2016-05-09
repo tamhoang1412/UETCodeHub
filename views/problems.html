@@ -1,33 +1,29 @@
 <div class="container">
-  <h2 id="course-name">
-    INT 2345 6
+  <h2 id="examination-name">
+    Thi Tin học cơ sở 1 học kì 2015-2016
   </h2>     
-  <table id="exercises-table"></table>
+  <table id="problems-table"></table>
 </div>
 
 <script>
   var text = '[{"name":"Fibonaci","description":"Sinh dãy số Fibonaci","deadline":"23:59 30/4/2016", "score":"0", "status":"Chưa nộp", "timeLimit":"2"},{"name":"Fibonaci","description":"Sinh dãy số Fibonaci","deadline":"23:59 30/4/2016", "score":"0", "status":"Chưa nộp", "timeLimit":"2"}]';
-  document.getElementById("exercises-table").innerHTML = jsonToHTMLTableExercises(text);
+  document.getElementById("problems-table").innerHTML = jsonToHTMLTableProblems(text);
   $(document).ready(function() {
-      $('#exercises-table').DataTable( {
+      $('#problems-table').DataTable( {
           "pagingType": "full_numbers"
       } );
     } );
-  function jsonToHTMLTableExercises(response){
+  function jsonToHTMLTableProblems(response){
     var arr = JSON.parse(text);
     var i;
-    var out = "<table class=\"table table-bordered\"><thead><tr><th>Tên bài</th><th>Mô tả</th><th>Deadline</th><th>Điểm</th><th>Trạng thái</th></tr></thead><tbody>";
+    var out = "<table class=\"table table-bordered\"><thead><tr><th>Tên bài</th><th>Mô tả</th><th>Time limit</th></tr></thead><tbody>";
     for(i = 0; i < arr.length; i++) {
         out += "<tr><td>" +  "<a href=\"\">" +
         arr[i].name + "</a>" +
         "</td><td>" +
         arr[i].description +
         "</td><td>" +
-        arr[i].deadline +
-        "</td><td>"+
-        arr[i].score +
-        "</td><td>"+
-        arr[i].status +
+        arr[i].timeLimit +
         "</td></tr>";
     }
     out += "</tbody></table>";
